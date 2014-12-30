@@ -13,6 +13,20 @@ namespace BookLibrary.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // /books/create
+            routes.MapRoute(
+                name: "Create a Book",
+                url: "books/create",
+                defaults: new { controller = "Book", action = "Create" }
+            );
+
+            // /books/update
+            routes.MapRoute(
+                name: "Update a Book",
+                url: "books/update/{id}",
+                defaults: new { controller = "Book", action = "Update" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

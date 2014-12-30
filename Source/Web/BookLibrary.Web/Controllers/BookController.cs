@@ -21,5 +21,10 @@ namespace BookLibrary.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Update(int id)
+        {
+            return View();
+        }
 	}
 }
