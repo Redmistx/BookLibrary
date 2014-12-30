@@ -23,6 +23,8 @@
             return base.SaveChanges();
         }
 
+        public IDbSet<Book> books { get; set; }
+
         private void ApplyAuditInfoRules()
         {
             // Approach via @julielerman: http://bit.ly/123661P

@@ -66,6 +66,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.7\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -120,6 +129,9 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -128,11 +140,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Book\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -182,8 +194,26 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <Content Include="Views\Book\Create.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\BookLibrary.Data.Common\BookLibrary.Data.Common.csproj">
+      <Project>{ee28aa3e-bcdf-4df4-9e67-f0c89cb40713}</Project>
+      <Name>BookLibrary.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\BookLibrary.Data.Models\BookLibrary.Data.Models.csproj">
+      <Project>{070c621e-d656-4c98-8d38-b210fd4cacd2}</Project>
+      <Name>BookLibrary.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\BookLibrary.Data\BookLibrary.Data.csproj">
+      <Project>{8a1d3bd5-d705-4765-a966-576bb02cb3c5}</Project>
+      <Name>BookLibrary.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookLibrary.Web.Infrastructure\BookLibrary.Web.Infrastructure.csproj">
+      <Project>{10968d70-106c-44c6-9a00-8ed58176f1a2}</Project>
+      <Name>BookLibrary.Web.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
