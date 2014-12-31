@@ -16,15 +16,21 @@ namespace BookLibrary.Web
             // /books/create
             routes.MapRoute(
                 name: "Create a Book",
-                url: "books/create",
+                url: "Books/Create",
                 defaults: new { controller = "Book", action = "Create" }
             );
 
             // /books/update
             routes.MapRoute(
                 name: "Update a Book",
-                url: "books/update/{id}",
-                defaults: new { controller = "Book", action = "Update" }
+                url: "Books/Update",
+                defaults: new { controller = "Book", action = "Edit" }
+            );
+
+            routes.MapRoute(
+                name: "Rent a Book",
+                url: "Book/Rent/{id}",
+                defaults: new { controller = "Home", action = "Rent" }
             );
 
             routes.MapRoute(

@@ -7,13 +7,19 @@
     using System.Data.Entity;
     using BookLibrary.Data.Common.Models;
     using BookLibrary.Data.Migrations;
+    using System.Data.Entity.Migrations;
 
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
-            Database.SetInitializer<ApplicationDbContext>(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+        }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
         }
 
         public override int SaveChanges()
@@ -23,7 +29,7 @@
             return base.SaveChanges();
         }
 
-        public IDbSet<Book> books { get; set; }
+        public IDbSet<Book> Books { get; set; }
 
         private void ApplyAuditInfoRules()
         {
