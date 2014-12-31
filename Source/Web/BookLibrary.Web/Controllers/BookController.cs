@@ -12,6 +12,8 @@ using BookLibrary.Web.ViewModels.Home;
 
 namespace BookLibrary.Web.Controllers
 {
+    // TODO: Proper Authorization
+    [Authorize(Users = @"REDMIST\enzeru")]
     public class BookController : Controller
     {
         private readonly IDeletableEntityRepository<Book> books;

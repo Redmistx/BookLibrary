@@ -27,13 +27,7 @@ namespace BookLibrary.Web.Controllers
             return View(bookz);
         }
 
-        //[HttpGet]
-        //public ActionResult Rent()
-        //{
-        //    return Content("Rent get");
-        //}
-
-        [HttpPost]
+        [HttpGet]
         public ActionResult Rent(int id)
         {
             if (ModelState.IsValid)
@@ -53,19 +47,24 @@ namespace BookLibrary.Web.Controllers
             return Content("some error");
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Return(int id)
         {
             if (ModelState.IsValid)
             {
+                
                 var bookToReturn = books.GetById(id);
+                
                 if (!bookToReturn.IsAvailable)
                 {
-                    bookToReturn.IsAvailable = true;
-                    bookToReturn.RentedBy = null;
-                    this.books.SaveChanges();
+                    if (User.Identity.Name == bookToReturn.RentedBy)
+                    {
+                        bookToReturn.IsAvailable = true;
+                        bookToReturn.RentedBy = null;
+                        this.books.SaveChanges();
 
-                    return this.RedirectToAction("Index");
+                        return this.RedirectToAction("Index");
+                    }
                 }
             }
 
