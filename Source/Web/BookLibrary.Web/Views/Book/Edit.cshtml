@@ -1,7 +1,43 @@
-﻿
+﻿@model IEnumerable<BookLibrary.Web.ViewModels.Home.BookViewModel>
 @{
-    ViewBag.Title = "Update";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Update a book</h2>
+<h2>Edit Books</h2>
 
+<div>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <tr class="table-bordered">
+                <th class="col-md-7">Book Name</th>
+                <th class="col-md-1">Available</th>
+                <th class="col-md-1"></th>
+                <th class="col-md-1"></th>
+            </tr>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Name</td>
+                    <td>
+                        @if (book.IsAvailable)
+                        {
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Update", "Update", "Book", new { id = book.Id }, new { @class = "btn btn-sm btn-default" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", "Book", new { id = book.Id }, new { @class = "btn btn-sm btn-default" })
+                    </td>
+                </tr>
+            }
+        </table>
+        <nav>
+            <ul class="pagination pagination-sm btn-group-sm">
+                <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

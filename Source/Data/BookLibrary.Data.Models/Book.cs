@@ -9,8 +9,10 @@
         [Key]
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
+        [MaxLength(300)]
         public string Description { get; set; }
 
         public bool IsAvailable { get; set; }

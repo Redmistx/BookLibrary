@@ -22,7 +22,7 @@ namespace BookLibrary.Web
 
             // /books/update
             routes.MapRoute(
-                name: "Update a Book",
+                name: "Update Books",
                 url: "Books/Update",
                 defaults: new { controller = "Book", action = "Edit" }
             );
@@ -31,6 +31,12 @@ namespace BookLibrary.Web
                 name: "Rent a Book",
                 url: "Book/Rent/{id}",
                 defaults: new { controller = "Home", action = "Rent" }
+            );
+
+            routes.MapRoute(
+                name: "Library",
+                url: "Home/Index",
+                defaults: new { controller = "Home", action = "Index", }
             );
 
             routes.MapRoute(

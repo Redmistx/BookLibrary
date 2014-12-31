@@ -33,7 +33,7 @@ namespace BookLibrary.Web.Controllers
         //    return Content("Rent get");
         //}
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult Rent(int id)
         {
             if (ModelState.IsValid)
@@ -53,7 +53,7 @@ namespace BookLibrary.Web.Controllers
             return Content("some error");
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult Return(int id)
         {
             if (ModelState.IsValid)
